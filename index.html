@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Video Showreel</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #1e3c72, #2a5298);
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+    header {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+    nav a {
+      margin: 0 15px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: #ff5722;
+    }
+    .contact-btn {
+      background-color: #ff5722;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+    }
+    .contact-btn:hover {
+      background-color: #e64a19;
+    }
+    .container {
+      padding: 50px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .section {
+      margin: 40px 0;
+      opacity: 0;
+      transform: translateY(100px) scale(0.9);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .section:nth-child(odd) {
+      transform: translateX(-100px) scale(0.9);
+    }
+    .section:nth-child(odd).visible {
+      transform: translateX(0) scale(1);
+    }
+    .section:nth-child(even) {
+      transform: translateX(100px) scale(0.9);
+    }
+    .section:nth-child(even).visible {
+      transform: translateX(0) scale(1);
+    }
+    .section iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border: none;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    }
+    .catchphrase {
+      font-size: 28px;
+      font-weight: bold;
+    }
+    /* Updated Text Crawl Animation */
+    .text-crawl {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    .crawl-line {
+      display: flex;
+      white-space: nowrap;
+      font-size: 40px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      width: 400%;
+      animation: crawl 20s linear infinite;
+    }
+    .crawl-line:nth-child(1) { top: 15%; }
+    .crawl-line:nth-child(2) { top: 35%; }
+    .crawl-line:nth-child(3) { top: 55%; }
+    .crawl-line:nth-child(4) { top: 75%; }
+    .crawl-line:nth-child(5) { top: 95%; } /* New fifth line */
+    .crawl-line span {
+      margin-right: 80px;
+    }
+    .crawl-line img {
+      height: 60px;
+      vertical-align: middle;
+      margin-right: 80px;
+    }
+    @keyframes crawl {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-75%); }
+    }
+    /* Popup Styles */
+    .about-popup, .contact-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      background: #fff;
+      color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .about-popup.show, .contact-popup.show {
+      display: block;
+      animation: fadeIn 0.2s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+      100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+    .close-btn {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #ff5722;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    footer {
+      background-color: #333;
+      padding: 20px 50px;
+      color: #ddd;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <!-- Updated Text Crawl with 5th Line -->
+  <div class="text-crawl">
+    <div class="crawl-line">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+    </div>
+    <div class="crawl-line">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+    </div>
+    <div class="crawl-line">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+    </div>
+    <div class="crawl-line">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+    </div>
+    <div class="crawl-line">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
+    </div>
+  </div>
+
+  <header>
+    <div class="logo">My Showreel</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#" onclick="showAboutPopup()">About</a>
+      <a href="#" onclick="showContactPopup()" class="contact-btn">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>Intro Video</h2>
+      <iframe src="https://www.youtube.com/embed/3wPbe6bO5-0?si=Jp6gPWrlmVTNMcPO" allowfullscreen></iframe>
+    </div>
+
+    <div class="section">
+      <h2>Documentary Style Video</h2>
+      <iframe src="https://www.youtube.com/embed/PfJ4IBMcc1Y?si=JrL8xoUSWBM3NNJR" allowfullscreen></iframe>
+    </div>
+
+    <div class="section">
+      <h2>Animation Video</h2>
+      <iframe src="https://www.youtube.com/embed/5aHzfNsQ8aI?si=AH7X6A9pfDk5TMrQ" allowfullscreen></iframe>
+    </div>
+
+    <div class="section">
+      <h2>Reel Videos</h2>
+      <iframe src="https://www.youtube.com/embed/0v6uJFf-SXU?si=0ymEe6Ud2hIMcT6C" allowfullscreen></iframe>
+    </div>
+
+    <div class="section">
+      <h2>Thumbnail Design</h2>
+      <iframe src="https://www.youtube.com/embed/-GLO126n2MU?si=qMfvDDktO_VUXhJy" allowfullscreen></iframe>
+    </div>
+
+    <div class="section">
+      <p class="catchphrase">"Your Content Deserves the Best Editor. Let's Get Started!"</p>
+      <a href="#" onclick="showContactPopup()" class="contact-btn">Contact Now</a>
+    </div>
+  </div>
+
+  <div class="about-popup" id="aboutPopup">
+    <p>As a skilled freelance video editor with over three years of experience, I specialize in transforming your raw footage into polished, engaging videos. With expertise in Adobe Premiere Pro, After Effects, Photoshop, and other AI tools, I bring a comprehensive approach to video editing. Whether you need dynamic motion graphics, seamless transitions, or meticulous color correction, I deliver high-quality results quickly and efficiently. Let me help you make your vision come to life with videos that captivate and impress your audience.</p>
+    <button class="close-btn" onclick="closeAboutPopup()">Close</button>
+  </div>
+
+  <div class="contact-popup" id="contactPopup">
+    <p>Email: <strong>subhamaysarkar486@gmail.com</strong></p>
+    <button onclick="copyEmail()" class="close-btn">Copy Email</button>
+    <button onclick="closeContactPopup()" class="close-btn">Close</button>
+  </div>
+
+  <footer>
+    <div class="copyright">© 2025 Your Company. All Rights Reserved.</div>
+  </footer>
+
+  <script>
+    function showAboutPopup() {
+      document.getElementById('aboutPopup').classList.add('show');
+    }
+    function closeAboutPopup() {
+      document.getElementById('aboutPopup').classList.remove('show');
+    }
+    function showContactPopup() {
+      document.getElementById('contactPopup').classList.add('show');
+    }
+    function closeContactPopup() {
+      document.getElementById('contactPopup').classList.remove('show');
+    }
+    function copyEmail() {
+      navigator.clipboard.writeText('subhamaysarkar486@gmail.com');
+      alert('Email copied to clipboard!');
+    }
+    const sections = document.querySelectorAll('.section');
+    function revealSections() {
+      const windowHeight = window.innerHeight;
+      const revealPoint = windowHeight * 0.8;
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < revealPoint && !section.classList.contains('visible')) {
+          section.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealSections);
+    window.addEventListener('load', revealSections);
+  </script>
+</body>
+</html>
