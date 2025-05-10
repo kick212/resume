@@ -83,11 +83,31 @@
       background: rgba(255, 255, 255, 0.05);
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     }
+    /* Reels container styles */
+    .reels-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .reel-item {
+      flex: 1;
+      min-width: 300px;
+      max-width: 350px;
+    }
+    .reel-item iframe {
+      width: 100%;
+      height: 600px; /* Taller height for vertical reels */
+      border: none;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    }
     .catchphrase {
       font-size: 28px;
       font-weight: bold;
     }
-    /* Updated Text Crawl Animation */
+    /* Text Crawl Animation */
     .text-crawl {
       position: fixed;
       top: 0;
@@ -113,7 +133,6 @@
     .crawl-line:nth-child(2) { top: 35%; }
     .crawl-line:nth-child(3) { top: 55%; }
     .crawl-line:nth-child(4) { top: 75%; }
-    .crawl-line:nth-child(5) { top: 95%; } /* New fifth line */
     .crawl-line span {
       margin-right: 80px;
     }
@@ -170,14 +189,8 @@
   </style>
 </head>
 <body>
-  <!-- Updated Text Crawl with 5th Line -->
+  <!-- Text Crawl -->
   <div class="text-crawl">
-    <div class="crawl-line">
-      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
-      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
-      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
-      <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
-    </div>
     <div class="crawl-line">
       <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
       <span>Video Editing</span><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><img src="https://www.adobe.com/content/dam/cc/us/public/en/iconography/photoshop-icon.svg" alt="Photoshop">
@@ -214,26 +227,47 @@
   </header>
 
   <div class="container">
+    <!-- 1. Intro Video -->
     <div class="section">
       <h2>Intro Video</h2>
       <iframe src="https://www.youtube.com/embed/3wPbe6bO5-0?si=Jp6gPWrlmVTNMcPO" allowfullscreen></iframe>
     </div>
 
+    <!-- 2. Second Video -->
+    <div class="section">
+      <h2>Creative Video</h2>
+      <iframe src="https://www.youtube.com/embed/PkS1roOuGQk" allowfullscreen></iframe>
+    </div>
+
+    <!-- 3. Documentary -->
     <div class="section">
       <h2>Documentary Style Video</h2>
       <iframe src="https://www.youtube.com/embed/PfJ4IBMcc1Y?si=JrL8xoUSWBM3NNJR" allowfullscreen></iframe>
     </div>
 
+    <!-- 4. Animation -->
     <div class="section">
       <h2>Animation Video</h2>
       <iframe src="https://www.youtube.com/embed/5aHzfNsQ8aI?si=AH7X6A9pfDk5TMrQ" allowfullscreen></iframe>
     </div>
 
+    <!-- 5. Reels (now in horizontal layout) -->
     <div class="section">
       <h2>Reel Videos</h2>
-      <iframe src="https://www.youtube.com/embed/0v6uJFf-SXU?si=0ymEe6Ud2hIMcT6C" allowfullscreen></iframe>
+      <div class="reels-container">
+        <div class="reel-item">
+          <iframe src="https://www.youtube.com/embed/XSoVC44sV3I" allowfullscreen></iframe>
+        </div>
+        <div class="reel-item">
+          <iframe src="https://www.youtube.com/embed/MnSp_uXlw7A" allowfullscreen></iframe>
+        </div>
+        <div class="reel-item">
+          <iframe src="https://www.youtube.com/embed/l-E_5lCkZYE" allowfullscreen></iframe>
+        </div>
+      </div>
     </div>
 
+    <!-- 6. Thumbnail -->
     <div class="section">
       <h2>Thumbnail Design</h2>
       <iframe src="https://www.youtube.com/embed/-GLO126n2MU?si=qMfvDDktO_VUXhJy" allowfullscreen></iframe>
@@ -261,6 +295,7 @@
   </footer>
 
   <script>
+    // Popup functions
     function showAboutPopup() {
       document.getElementById('aboutPopup').classList.add('show');
     }
@@ -277,17 +312,23 @@
       navigator.clipboard.writeText('subhamaysarkar486@gmail.com');
       alert('Email copied to clipboard!');
     }
+
+    // Scroll reveal animation
     const sections = document.querySelectorAll('.section');
+    
     function revealSections() {
       const windowHeight = window.innerHeight;
       const revealPoint = windowHeight * 0.8;
+
       sections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
+
         if (sectionTop < revealPoint && !section.classList.contains('visible')) {
           section.classList.add('visible');
         }
       });
     }
+
     window.addEventListener('scroll', revealSections);
     window.addEventListener('load', revealSections);
   </script>
